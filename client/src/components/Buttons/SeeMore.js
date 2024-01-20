@@ -1,0 +1,34 @@
+import React from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+function SeeMore({ pId, cId , width , height}) {
+  const navigate = useNavigate();
+  const handleProductDetail = async (e) => {
+    e.preventDefault();
+    try {
+      navigate(`/product-detail/${pId}/${cId}`);
+    } catch (error) {
+      toast.error("Request Timeout")
+    }
+  };
+
+  return (
+    <button
+      className={`bg-purple-700 btn hover:bg-purple-900 btn-sm text-white seeMore-btn ms-2 px-${width} py-${height}`}
+      style={{border:'2px solid #7f8fa6'}}
+      onClick={(e) => {
+        e.preventDefault();
+        handleProductDetail(e);
+      }}
+    >
+      SEE MORE
+    </button>
+  );
+}
+
+SeeMore.defaultProps={
+  width:4,
+  height:1
+}
+
+export default SeeMore;
