@@ -126,6 +126,17 @@ function AllOrders() {
                       <b>Order Time : </b>
                       {moment(o.createdAt).fromNow()}
                     </div>
+                    <details>
+                      <summary>Address : </summary>
+                      <div className="d-flex flex-column gap-2">
+                      <p>PIN : {o.address.postcode}</p>
+                      <p>State : {o.address.state}</p>
+                      <p>Country : {o.address.country}</p>
+                      <p>Road : {o.address.road}</p>
+                      <p>State District : {o.address.state_district}</p>
+                      <p>Village : {o.address.village}</p>
+                    </div>
+                    </details>
                     <div>
                       <b>Shipping Status : </b>
                       <Select

@@ -6,6 +6,16 @@ function GetUserLocationForm() {
   const { currentAddress, setCurrentAddress } = useAddress({});
   const [location, setLocation] = useState(null);
   const [locationStatus, setLocationStatus] = useState(false);
+  console.log(currentAddress)
+  const handleInputChange = (fieldName) => (event) => {
+    const { value } = event.target;
+
+    // Update the specific field in the formData object
+    setCurrentAddress((prevData) => ({
+      ...prevData,
+      [fieldName]: value,
+    }));
+  };
   useEffect(() => {
     if (locationStatus) {
       if (navigator.geolocation) {
@@ -20,6 +30,7 @@ function GetUserLocationForm() {
             try {
               const response = await axios.get(apiUrl);
               const firstResult = response.data.results[0];
+              console.log(response)
 
               if (firstResult) {
                 const {
@@ -71,6 +82,7 @@ function GetUserLocationForm() {
       <form className="bg-white p-4">
         <div className="form-group">
           <input
+          onChange={handleInputChange('postcode')}
             value={currentAddress.postcode}
             type="text"
             className="form-control mt-3"
@@ -81,6 +93,7 @@ function GetUserLocationForm() {
         </div>
         <div className="form-group">
           <input
+          onChange={handleInputChange('country')}
             value={currentAddress.country}
             type="text"
             className="form-control mt-3"
@@ -90,6 +103,7 @@ function GetUserLocationForm() {
         </div>
         <div className="form-group">
           <input
+          onChange={handleInputChange('state')}
             value={currentAddress.state}
             type="text"
             className="form-control mt-3"
@@ -99,6 +113,7 @@ function GetUserLocationForm() {
         </div>
         <div className="form-group">
           <input
+          onChange={handleInputChange('state_district')}
             value={currentAddress.state_district}
             type="text"
             className="form-control mt-3"
@@ -108,6 +123,7 @@ function GetUserLocationForm() {
         </div>
         <div className="form-group">
           <input
+          onChange={handleInputChange('village')}
             value={currentAddress.village}
             type="text"
             className="form-control mt-3"
@@ -117,6 +133,7 @@ function GetUserLocationForm() {
         </div>
         <div className="form-group">
           <input
+          onChange={handleInputChange('road')}
             value={currentAddress.road}
             type="text"
             className="form-control mt-3"
