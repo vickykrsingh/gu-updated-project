@@ -2,6 +2,7 @@ import { instance } from "../server.js";
 import crypto from "crypto";
 import OrderModel from "../models/orderModel.js";
 import cartModel from "../models/cartModel.js";
+import productModel from "../models/productModel.js";
 
 export const checkoutController = async (req, res) => {
   var options = {
@@ -144,3 +145,14 @@ export const searchAdminOrder = async (req, res) => {
     });
   }
 };
+
+
+export const deleteOder = async (req,res) => {
+  try {
+    const order = await productModel.find()
+    console.log(req)
+  } catch (error) {
+    // TODO
+    console.log(error)
+  }
+}
