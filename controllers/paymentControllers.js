@@ -20,6 +20,7 @@ export const paymentVerification = async (req, res) => {
   console.log("hello world");
   console.log(req.body);
   const { payment_id, order_id, signature, cart, tot, address } = req.body;
+  console.log(payment_id,order_id,signature,cart,tot,address)
   console.log(address);
 
   const body = order_id + "|" + payment_id;

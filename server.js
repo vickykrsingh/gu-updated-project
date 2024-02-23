@@ -11,6 +11,7 @@ import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoute from "./routes/productRoutes.js";
 import cartRoute from "./routes/cartRoutes.js"
 import paymentRoutes from "./routes/paymentRoutes.js"
+import userRoutes from "./routes/userRoute.js"
 import path from 'path';
 import { fileURLToPath } from "url";
 
@@ -50,6 +51,7 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/cart", cartRoute);
 app.use("/api/v1/payment", paymentRoutes);
+app.use("/api/v1/user", userRoutes);
 
 // Rest api
 app.use('*',function(req,res){

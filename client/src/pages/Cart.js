@@ -61,6 +61,7 @@ function Cart() {
       const {
         data: { key },
       } = await axios.get("/api/v1/payment/get-key");
+      console.log(key)
       const {
         data: { order },
       } = await axios.post(
@@ -69,6 +70,7 @@ function Cart() {
           amount: Number(tot),
         }
       );
+      console.log(order)
       var options = {
         key: key,
         amount: order.amount,
@@ -85,9 +87,10 @@ function Cart() {
               signature: response.razorpay_signature,
               cart: cart,
               tot,
-              address:currentAddress||'hello'
+              address:currentAddress
             }
           );
+          console.log(data)
           if (data?.success) {
             setCart([]);
             navigate("/dashboard/user/orders");
