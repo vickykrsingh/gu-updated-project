@@ -1,0 +1,7 @@
+step 1 : cmd : "cd client"
+step 2 : cmd : "npm i"
+step 3 : cmd : "cd .."
+step 4 : cmd : "npm i"
+step 5 : cmd : "npm run dev"
+
+after few second it will run on port 3000.
