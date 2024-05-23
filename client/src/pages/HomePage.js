@@ -120,9 +120,9 @@ export default function Home() {
           <Loading />
         ) : (
           <div className="HomePage container-fluid">
-            {/* <div className="row m-0 p-0">
+            <div className="row m-0 p-0">
               <img src={Banner} alt="Banner" className="rounded-2 m-0 p-0" />
-            </div> */}
+            </div>
             <div className="row">
               <div className="col-lg-12 filter-section">
                 <div className="accordion my-2" id="accordionExample">
