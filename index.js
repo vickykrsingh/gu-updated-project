@@ -12,8 +12,8 @@ import productRoute from "./routes/productRoutes.js";
 import cartRoute from "./routes/cartRoutes.js"
 import paymentRoutes from "./routes/paymentRoutes.js"
 import userRoutes from "./routes/userRoute.js"
-// import path from 'path';
-// import { fileURLToPath } from "url";
+import path from 'path';
+import { fileURLToPath } from "url";
 
 
 // rest object
@@ -28,6 +28,11 @@ connectDB();
 // es-module fix
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename)
+app.get("/",(req,res)=>{
+  app.use(express.static(path.resolve(__dirname,"client","build")))
+  res.sendFile(path.resolve(__dirname,"client","build","index.html"))
+})
+
 
 export const instance = new Razorpay({
   key_id:process.env.RAZORPAY_KEY_ID,
