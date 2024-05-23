@@ -26,8 +26,8 @@ dotenv.config();
 connectDB();
 
 // es-module fix
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename)
 app.get("/",(req,res)=>{
   app.use(express.static(path.resolve(__dirname,"client","build")))
   res.sendFile(path.resolve(__dirname,"client","build","index.html"))
