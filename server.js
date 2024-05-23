@@ -26,8 +26,8 @@ dotenv.config();
 connectDB();
 
 // es-module fix
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename)
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename)
 
 export const instance = new Razorpay({
   key_id:process.env.RAZORPAY_KEY_ID,
@@ -37,19 +37,18 @@ export const instance = new Razorpay({
 // middleWares
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(cors({
-  origin:['https://ddproduct.vercel.app/'],
-  methods:['GET','POST'],
-  credentials:true
-}))
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname,'./client/build')))
+// app.use(express.static(path.join(__dirname,'./client/build')))
 
 // Accessing Environment variables
 const PORT = process.env.PORT || 8080;
 const Mode = process.env.MODE;
 
 // routes
+app.get('/',(req,res)=>{
+  res.send("pong")
+})
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoute);
@@ -58,9 +57,9 @@ app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/user", userRoutes);
 
 // Rest api
-app.use('*',function(req,res){
-  res.sendFile(path.join(__dirname,"*./client/build/index.html"));
-})
+// app.use('*',function(req,res){
+  // res.sendFile(path.join(__dirname,"*./client/build/index.html"));
+// })
 
 
 // Server listening
