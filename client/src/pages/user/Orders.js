@@ -16,7 +16,7 @@ function Orders() {
   const getAllOrder = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("/api/v1/payment/all-order");
+      const { data } = await axios.get(`${window.location.origin}/api/v1/payment/all-order`);
       if (data?.success) {
         setOrder(data?.orders);
         setLoading(false);
@@ -95,7 +95,7 @@ function Orders() {
                           <div className="card d-flex flex-row p-2 w-100">
                             <div className="card-image d-flex align-items-center justify-content-center">
                               <img
-                                src={`/api/v1/product/product-photo/${p.productId}`}
+                                src={`${window.location.origin}/api/v1/product/product-photo/${p.productId}`}
                                 alt="Apple watch"
                                 width={"100px"}
                                 className="rounded-2"

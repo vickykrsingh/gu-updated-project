@@ -19,7 +19,7 @@ function Products() {
   const getAllProduct = async (req, res) => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${window.location.origin}/api/v1/product/product-list/${page}`);
       if (data?.success) {
         setProducts(data?.products);
       }
@@ -36,7 +36,7 @@ function Products() {
 
   const totalProductCount = async (req, res) => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get(`${window.location.origin}/api/v1/product/product-count`);
       setTotal(data?.total);
     } catch (error) {
       toast.error("Request Timeout")
@@ -54,7 +54,7 @@ function Products() {
 
   const loadMore = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${window.location.origin}/api/v1/product/product-list/${page}`);
       setProducts([...products, ...data?.products]);
     } catch (error) {
       toast.error("Request Timeout")
@@ -90,7 +90,7 @@ function Products() {
                       >
                         <img
                           className="card-img-top"
-                          src={`/api/v1/product/product-photo/${p._id}`}
+                          src={`${window.location.origin}/api/v1/product/product-photo/${p._id}`}
                           alt="Card_image_cap"
                         />
                         <div className="card-body">

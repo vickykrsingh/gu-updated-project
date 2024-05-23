@@ -40,7 +40,7 @@ export default function Home() {
     try {
       setLoading(true);
       setGlobalLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${window.location.origin}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setGlobalLoading(false);
       if (data?.success) {
@@ -53,7 +53,7 @@ export default function Home() {
 
   const fetchAllCategory = async () => {
     try {
-      const category = await axios.get("/api/v1/category/get-all-category");
+      const category = await axios.get(`${window.location.origin}/api/v1/category/get-all-category`);
       if (category?.data?.success) {
         setCategory(category?.data?.allCategory);
       }
@@ -73,7 +73,7 @@ export default function Home() {
 
   const totalProductCount = async (req, res) => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get(`${window.location.origin}/api/v1/product/product-count`);
       setTotal(data?.total);
     } catch (error) {
       toast.error("Request Timeout")
@@ -91,7 +91,7 @@ export default function Home() {
 
   const loadMore = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${window.location.origin}/api/v1/product/product-list/${page}`);
       setProducts([...products, ...data?.products]);
     } catch (error) {
       toast.error("Request Timeout")
@@ -104,7 +104,7 @@ export default function Home() {
   }, [checked, radio]);
   const filterProducts = async () => {
     try {
-      const { data } = await axios.post("/api/v1/product/product-filter", {
+      const { data } = await axios.post(`${window.location.origin}/api/v1/product/product-filter`, {
         checked,
         radio,
       });
@@ -197,7 +197,7 @@ export default function Home() {
                           >
                             <img
                               className="card-img-top rounded-2"
-                              src={`/api/v1/product/product-photo/${p._id}`}
+                              src={`${window.location.origin}/api/v1/product/product-photo/${p._id}`}
                               alt="Card_image_cap"
                             />
                             <div className="card-body p-1">

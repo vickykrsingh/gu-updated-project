@@ -20,7 +20,7 @@ function SingleProductDetail() {
 
   const getProduct = async () => {
     setLoading(true);
-    const { data } = await axios.get(`/api/v1/product/get-product/${pId}`);
+    const { data } = await axios.get(`${window.location.origin}/api/v1/product/get-product/${pId}`);
     setLoading(false);
     await setDetail(data?.product);
   };
@@ -28,7 +28,7 @@ function SingleProductDetail() {
   const similarProduct = async (cId) => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/similar-product/${pId}/${cId}`
+        `${window.location.origin}/api/v1/product/similar-product/${pId}/${cId}`
       );
       const finalProduct = data.products.filter((p) => p._id !== pId);
       setSimilarProducts(finalProduct);
@@ -95,7 +95,7 @@ function SingleProductDetail() {
             <div className="col-md-6 p-3 col-lg-5">
               <img
                 className="img img-responsive w-100 rounded-5"
-                src={`/api/v1/product/product-photo/${detail._id}`}
+                src={`${window.location.origin}/api/v1/product/product-photo/${detail._id}`}
                 alt="Card_image_cap"
               />
             </div>
@@ -144,7 +144,7 @@ function SingleProductDetail() {
                         <img
                           className="card-img-top"
                           style={{ width: "15rem" }}
-                          src={`/api/v1/product/product-photo/${s._id}`}
+                          src={`${window.location.origin}/api/v1/product/product-photo/${s._id}`}
                           alt="Card_image_cap"
                         />
                         <div className="card-body p-1">

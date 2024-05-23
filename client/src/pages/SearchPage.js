@@ -27,7 +27,7 @@ function SearchPage() {
                 >
                   <img
                     className="card-img-top"
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`${window.location.origin}/api/v1/product/product-photo/${p._id}`}
                     alt="Card_image_cap"
                   />
                   <div className="card-body p-1">

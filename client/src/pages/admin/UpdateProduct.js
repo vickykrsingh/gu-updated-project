@@ -27,7 +27,7 @@ function UpdateProduct() {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/get-product/${params.id}`
+        `${window.location.origin}/api/v1/product/get-product/${params.id}`
       );
       setName(data.product.name);
       setDescription(data.product.description);
@@ -50,7 +50,7 @@ function UpdateProduct() {
   // ========================Fetch All Category=========================
   const fetchAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-all-category");
+      const { data } = await axios.get(`${window.location.origin}/api/v1/category/get-all-category`);
       if (data?.success) {
         setCategories(data?.allCategory);
       }
@@ -75,13 +75,13 @@ function UpdateProduct() {
       productData.append("category", category);
       productData.append("shipping", shipping);
       const { data } = await axios.put(
-        `/api/v1/product/update-product/${pid}`,
+        `${window.location.origin}/api/v1/product/update-product/${pid}`,
         productData
       );
       if (data?.success) {
         toast.success(data?.message);
         navigate("/dashboard/admin/products");
-        await axios.get("/api/v1/product/get-product");
+        await axios.get(`${window.location.origin}/api/v1/product/get-product`);
       } else {
         toast.error(data?.message);
       }
@@ -96,12 +96,12 @@ function UpdateProduct() {
         return;
       }
       const { data } = await axios.delete(
-        `/api/v1/product/delete-product/${pid}`
+        `${window.location.origin}/api/v1/product/delete-product/${pid}`
       );
       if (data?.success) {
         toast.success(data?.message);
         navigate("/dashboard/admin/products");
-        await axios.get("/api/v1/product/get-product");
+        await axios.get(`${window.location.origin}/api/v1/product/get-product`);
       } else {
         toast.error(data?.message);
       }
@@ -162,7 +162,7 @@ function UpdateProduct() {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`/api/v1/product/product-photo/${pid}`}
+                      src={`${window.location.origin}/api/v1/product/product-photo/${pid}`}
                       alt="product_photo"
                       height={"200px"}
                       className="img img-responsive"

@@ -18,7 +18,7 @@ function Cart() {
 
   const getAllCart = async () => {
     try {
-      const { data } = await axios.get("/api/v1/cart/get-all-cart");
+      const { data } = await axios.get(`${window.location.origin}/api/v1/cart/get-all-cart`);
       setCart(data?.cartItem);
     } catch (error) {
       toast.error("Request Timeout");
@@ -27,7 +27,7 @@ function Cart() {
 
   const fetchTotPrice = async () => {
     try {
-      const { data } = await axios.get("/api/v1/cart/get-all-cart");
+      const { data } = await axios.get(`${window.location.origin}/api/v1/cart/get-all-cart`);
       if (data?.cartItem.length > 0) {
         const tot = data?.cartItem.map((t) => t.pPrice);
         const total = tot.reduce(function (a, b) {
@@ -43,7 +43,7 @@ function Cart() {
   const handleRemoveCart = async (event, id) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/cart/delete-single-cart", {
+      const { data } = await axios.post(`${window.location.origin}/api/v1/cart/delete-single-cart`, {
         id,
       });
       if (data?.success) {
@@ -60,12 +60,12 @@ function Cart() {
     try {
       const {
         data: { key },
-      } = await axios.get("/api/v1/payment/get-key");
+      } = await axios.get(`${window.location.origin}/api/v1/payment/get-key`);
       console.log(key)
       const {
         data: { order },
       } = await axios.post(
-        "/api/v1/payment/checkout",
+        `${window.location.origin}/api/v1/payment/checkout`,
         {
           amount: Number(tot),
         }
@@ -80,7 +80,7 @@ function Cart() {
         order_id: order.id,
         handler: async function (response) {
           const { data } = await axios.post(
-            "/api/v1/payment/payment-verification",
+            `${window.location.origin}/api/v1/payment/payment-verification`,
             {
               payment_id: response.razorpay_payment_id,
               order_id: response.razorpay_order_id,
@@ -142,7 +142,7 @@ function Cart() {
               <div className="card d-flex flex-row p-2">
                 <div className="card-image d-flex align-items-center justify-content-center">
                   <img
-                    src={`/api/v1/product/product-photo/${p.productId}`}
+                    src={`${window.location.origin}/api/v1/product/product-photo/${p.productId}`}
                     alt="Apple watch"
                     width={"100px"}
                     className="rounded-2"

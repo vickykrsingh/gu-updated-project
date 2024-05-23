@@ -24,7 +24,7 @@ function Profile() {
   const updateProfile = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`/api/v1/auth/update-profile`, {
+      const { data } = await axios.put(`${window.location.origin}/api/v1/auth/update-profile`, {
         name,
         password,
         phone,

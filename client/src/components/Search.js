@@ -11,7 +11,7 @@ function Search() {
   const handleSearch = async (e) => {
     try {
       e.preventDefault();
-      const { data } = await axios.get(`/api/v1/product/search/${values}`);
+      const { data } = await axios.get(`${window.location.origin}/api/v1/product/search/${values}`);
       if (data?.success) {
         setSearchProduct(data?.products);
         navigate("/search");

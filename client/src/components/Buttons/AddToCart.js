@@ -9,7 +9,7 @@ function AddToCart({ product , width , height }) {
 
   const getAllCart = async () => {
     try {
-      const {data} = await axios.get('/api/v1/cart/get-all-cart')
+      const {data} = await axios.get(`${window.location.origin}/api/v1/cart/get-all-cart`)
       // await setCart(data?.cartItem)
       return
     } catch (error) {
@@ -20,7 +20,7 @@ function AddToCart({ product , width , height }) {
   const handleCart = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`/api/v1/cart/add-to-cart`,{
+      const { data } = await axios.post(`${window.location.origin}/api/v1/cart/add-to-cart`,{
         _id:product._id,
         category:product.category,
         name:product.name,

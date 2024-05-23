@@ -16,7 +16,7 @@ export default function Register() {
   const register = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/auth/register", {
+      const { data } = await axios.post(`${window.location.origin}/api/v1/auth/register`, {
         name,
         email,
         password,

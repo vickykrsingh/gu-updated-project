@@ -23,7 +23,7 @@ function CreateProduct() {
   // ========================Fetch All Category=========================
   const fetchAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-all-category");
+      const { data } = await axios.get(`${window.location.origin}/api/v1/category/get-all-category`);
       if (data?.success) {
         setCategories(data?.allCategory);
       }
@@ -48,7 +48,7 @@ function CreateProduct() {
       productData.append("category", category);
       productData.append("shipping", shipping);
       const { data } = await axios.post(
-        "/api/v1/product/create-product",
+        `${window.location.origin}/api/v1/product/create-product`,
         productData
       );
       if (data?.success) {

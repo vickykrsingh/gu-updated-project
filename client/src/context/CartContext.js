@@ -8,7 +8,7 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const getAllCart = async () => {
     try {
-      const {data} = await axios.get('/api/v1/cart/get-all-cart')
+      const {data} = await axios.get(`${window.location.origin}/api/v1/cart/get-all-cart`)
       setCart(data.cartItem)
     } catch (error) {
       toast.error("Request Timeout")

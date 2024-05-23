@@ -16,7 +16,7 @@ function CreateCategory() {
   const [selected, setSelected] = useState(null);
   const fetchAllCategory = async () => {
     try {
-      const category = await axios.get("/api/v1/category/get-all-category");
+      const category = await axios.get(`${window.location.origin}/api/v1/category/get-all-category`);
       if (category.data.success) {
         setCategory(category.data.allCategory);
       }
@@ -27,7 +27,7 @@ function CreateCategory() {
   const createCategoryHandler = async (e) => {
     e.preventDefault();
     try {
-      const newCategory = await axios.post("/api/v1/category/create-category", {
+      const newCategory = await axios.post(`${window.location.origin}/api/v1/category/create-category`, {
         name,
       });
       if (newCategory?.data?.success) {
@@ -43,7 +43,7 @@ function CreateCategory() {
   const deleteCategoryHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `/api/v1/category/delete-category/${id}`
+        `${window.location.origin}/api/v1/category/delete-category/${id}`
       );
       if (data?.success) {
         toast.success("Successfully Deleted");
@@ -59,7 +59,7 @@ function CreateCategory() {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `/api/v1/category/update-category/${selected._id}`,
+        `${window.location.origin}/api/v1/category/update-category/${selected._id}`,
         { name: updated }
       );
       if (data?.success) {

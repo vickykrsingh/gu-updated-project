@@ -13,7 +13,7 @@ function ForgetPassword() {
   const forgetPassword = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v1/auth/forgetpassword", {
+      const res = await axios.post(`${window.location.origin}/api/v1/auth/forgetpassword`, {
         email,
         answer,
         newPassword,

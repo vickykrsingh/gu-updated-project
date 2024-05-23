@@ -26,7 +26,7 @@ function AllOrders() {
   const getAllOrder = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("/api/v1/payment/all-admin-order");
+      const { data } = await axios.get(`${window.location.origin}/api/v1/payment/all-admin-order`);
       if (data?.success) {
         setOrder(data?.orders);
         setLoading(false);
@@ -44,7 +44,7 @@ function AllOrders() {
 
   const handleChangeStatus = async (orderId, value) => {
     try {
-      await axios.put(`/api/v1/payment/order-status/${orderId}`, {
+      await axios.put(`${window.location.origin}/api/v1/payment/order-status/${orderId}`, {
         status: value,
       });
       getAllOrder();
@@ -56,7 +56,7 @@ function AllOrders() {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`/api/v1/payment/search-order`, {
+      const { data } = await axios.post(`${window.location.origin}/api/v1/payment/search-order`, {
         searchKey: searchKey,
         searchValue: search,
       });
@@ -167,7 +167,7 @@ function AllOrders() {
                         <div className="card d-flex flex-row p-2 w-100">
                           <div className="card-image d-flex align-items-center justify-content-center">
                             <img
-                              src={`/api/v1/product/product-photo/${p.productId}`}
+                              src={`${window.location.origin}/api/v1/product/product-photo/${p.productId}`}
                               alt="Apple watch"
                               width={"100px"}
                               className="rounded-2"

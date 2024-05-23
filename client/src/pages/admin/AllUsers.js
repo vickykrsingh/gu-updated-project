@@ -8,7 +8,7 @@ function AllUsers() {
   const fetchAllUsers = async () => {
     console.log('first')
     try {
-      const response = await axios.get("/api/v1/user/all-users");
+      const response = await axios.get(`${window.location.origin}/api/v1/user/all-users`);
       console.log(response.data)
       setUser(response.data);
     } catch (error) {
