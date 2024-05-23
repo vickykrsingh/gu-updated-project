@@ -12,8 +12,8 @@ import productRoute from "./routes/productRoutes.js";
 import cartRoute from "./routes/cartRoutes.js"
 import paymentRoutes from "./routes/paymentRoutes.js"
 import userRoutes from "./routes/userRoute.js"
-import path from 'path';
-import { fileURLToPath } from "url";
+// import path from 'path';
+// import { fileURLToPath } from "url";
 
 
 // rest object

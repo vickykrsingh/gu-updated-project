@@ -1,4 +1,4 @@
-import { instance } from "../server.js";
+import { instance } from "../index.js";
 import crypto from "crypto";
 import OrderModel from "../models/orderModel.js";
 import cartModel from "../models/cartModel.js";
